@@ -1,4 +1,9 @@
-<?php include"header.php"; ?>
+<?php
+
+$titulo = "Home";
+include "header.php";
+
+?>
 	<main>
 		<section class="container">
 			<div class="blocoFig">

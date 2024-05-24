@@ -1,4 +1,9 @@
-<?php include"header.php"; ?>
+<?php
+
+$titulo = "Analise e Desenvolvimento de sistemas";
+include "header.php";
+
+?>
 <main>
 		<section class="container margemSecao2 interna">
 			<h3>Análise e Desenvolvimento de Sistemas</h3>
