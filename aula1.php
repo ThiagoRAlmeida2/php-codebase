@@ -1,7 +1,7 @@
 <?php
     $nome =  "Thiago";
     $sobrenome = " Ribeiro";
-    $nomeCompleto = $nome . " " .$sobrenome;
+    $nomeCompleto = $nome . " " . $sobrenome;
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +15,7 @@
 <body>
     <h1> Aula 1</h1>
     <?php
-
-
+    echo "<h2>$nomeCompleto</h2>";
     ?>
 </body>
 </html>
