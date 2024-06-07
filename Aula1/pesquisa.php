@@ -1,6 +1,33 @@
 <?php
 $nome = $telefone = $email = $senha = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+$host 	= "localhost";
+$bd 	= "base_turma01";
+$user 	= "root";
+$pass 	= "";
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$bd", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $id = $_POST['id'];
+    $sql = "SELECT * FROM usuarios WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($row){
+        $nome = $row['nome'];
+        $telefone = $row['telefone'];
+        $email = $row['email'];
+        $senha = $row['senha'];
+    } else{
+        $nome = $telefone = $email = $senha = "";
+    }
+} catch (PDOException $e) {
+    echo "Erro: " . $e->getMessage();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,22 +47,22 @@ $nome = $telefone = $email = $senha = "";
         </form>
         <hr>
         <form method="post">
-            <input type="hidden" name="id" value="">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <p>
                 Nome:<br>
-                <input type="hidden" name="nome" value="">
+                <input type="text" name="nome" value="<?php echo $nome; ?>">
             </p>
             <p>
                 Telefone:<br>
-                <input type="number" name="Telefone" value="">
+                <input type="number" name="Telefone" value="<?php echo $telefone; ?>">
             </p>
             <p>
                 E-mail:<br>
-                <input type="text" name="email" value="">
+                <input type="text" name="email" value="<?php echo $email; ?>">
             </p>
             <p>
                 Senha:<br>
-                <input type="password" name="senha" value="">
+                <input type="password" name="senha" value="<?php echo $senha; ?>">
             </p>
             <p>
                 <input type="submit" value="Atualizar cadastro">
