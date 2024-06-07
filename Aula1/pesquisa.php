@@ -46,7 +46,8 @@ try {
             </p>
         </form>
         <hr>
-        <form method="post">
+        <?php if (!empty($nome)) {  ?>
+        <form method="post" action="atualiza.php">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <p>
                 Nome:<br>
@@ -54,7 +55,7 @@ try {
             </p>
             <p>
                 Telefone:<br>
-                <input type="number" name="Telefone" value="<?php echo $telefone; ?>">
+                <input type="number" name="telefone" value="<?php echo $telefone; ?>">
             </p>
             <p>
                 E-mail:<br>
@@ -68,5 +69,27 @@ try {
                 <input type="submit" value="Atualizar cadastro">
             </p>
         </form>
+        <?php } else { ?>
+        <form method="post" action="atualiza.php">
+            Nome:<br>
+            <input type="text" name="nome" placeholder="nome" disabled>
+        </p>
+        <p>
+            Telefone:<br>
+            <input type="number" name="Telefone"  placeholder="telefone" disabled>
+        </p>
+        <p>
+            E-mail:<br>
+            <input type="text" name="email" placeholder="email" disabled>
+        </p>
+        <p>
+            Senha:<br>
+            <input type="password" name="senha" placeholder="senha" disabled>
+        </p>
+        <p>
+            <input type="submit" value="Atualizar cadastro" disabled>
+        </p>
+    </form>
+    <?php } ?>
 </body>
 </html>
