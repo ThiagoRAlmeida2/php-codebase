@@ -23,6 +23,7 @@ $titulo = "Fazer Login";
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha" required>
 
+        <input type="button" value="Cadastrar Usuario" onclick="window.location.href='Cadastrar.php'">
         <input type="submit" value="Login">
     </form>
 
